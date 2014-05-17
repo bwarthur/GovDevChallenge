@@ -17,15 +17,15 @@ namespace sao_upload
     {
         static void Main(string[] args)
         {
-            List<AuditorItem> list = GetValue();
+            List<Auditor> list = GetValue();
             const int batchCount = 5;
-            string url = "http://1-dot-team03-govchal00.appspot.com/";
+            string url = "http://localhost.:8888/_ah/api/auditorEndpoint/v1/putList";
 
             for (int i = 0; i < list.Count/batchCount; i++)
             {
                 var subList = list.Skip(batchCount*i).Take(batchCount);
 
-                string json = JsonConvert.SerializeObject(subList);
+                string json = "{ \"items\": " + JsonConvert.SerializeObject(subList) + " }";
 
                 var webClient = new WebClient();
                 webClient.Headers["Content-Type"] = "application/json;charset=UTF-8";
@@ -34,11 +34,13 @@ namespace sao_upload
 
         }
 
-        private static List<AuditorItem> GetValue()
+        private static List<Auditor> GetValue()
         {
             string path = @"C:\projects\GovDevChallenge\net\data\Vendor Payments - ETS Data Request.csv";
 
-            var list = new List<AuditorItem>();
+            var list = new List<Auditor>();
+
+            int i = 0;
 
             using (TextReader textReader = new StreamReader(path))
             {
@@ -46,7 +48,7 @@ namespace sao_upload
                 {
                     while (csvReader.Read())
                     {
-                        var auditorItem = new AuditorItem();
+                        var auditorItem = new Auditor();
 
                         auditorItem.PaymentDate = csvReader.GetField<DateTime>(0);
                         auditorItem.Type = csvReader.GetField<string>(1);
@@ -66,6 +68,11 @@ namespace sao_upload
                         auditorItem.WarrantEFT = csvReader.GetField<string>(14);
 
                         list.Add(auditorItem);
+
+                        i++;
+
+                        if (i > 100)
+                            break;
                     }
                 }
             }

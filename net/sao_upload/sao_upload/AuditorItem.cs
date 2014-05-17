@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 
 namespace sao_upload
 {
-    public class AuditorItem
+    public class Auditor
     {
         [JsonProperty("paymentDate")]
         public DateTime PaymentDate { get; set; }

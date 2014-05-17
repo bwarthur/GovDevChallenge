@@ -2,23 +2,51 @@ package entity;
 
 import java.util.Date;
 
+import com.googlecode.objectify.annotation.Entity;
+import com.googlecode.objectify.annotation.Id;
+import com.googlecode.objectify.annotation.Index;
+
+@Entity
 public class Auditor {
+	@Id
+	private Long id;
+	@Index
 	private Date paymentDate;
+	@Index
     private float warrantEFTAmt;
+	@Index
     private String warrantEFTAmtSign;
+	@Index
     private float lineAmt;
+	@Index
     private String lineAmtSign;
+	@Index
     private String vendor;
+	@Index
     private String vendorName;
+	@Index
     private String dept;
+	@Index
     private String document;
+	@Index
     private String invoice;
+	@Index
     private String paymentDescription;
+	@Index
     private String deptName;
+	@Index
     private String deptContact;
+	@Index
     private String warrantEFT;
+	@Index
     private String type;
     
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
     public Date getPaymentDate() {
 		return paymentDate;
 	}
