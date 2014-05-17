@@ -1,0 +1,125 @@
+{
+  "extends" : "thirdParty.api",
+  "abstract" : false,
+  "root" : "https://team03-govchal00.appspot.com/_ah/api",
+  "name" : "auditorEndpoint",
+  "version" : "v1",
+  "defaultVersion" : false,
+  "adapter" : {
+    "bns" : "https://team03-govchal00.appspot.com/_ah/spi",
+    "deadline" : 65.0,
+    "type" : "lily"
+  },
+  "auth" : {
+    "allowCookieAuth" : false
+  },
+  "frontendLimits" : {
+    "unregisteredUserQps" : -1,
+    "unregisteredQps" : -1,
+    "unregisteredDaily" : -1,
+    "rules" : [ ]
+  },
+  "cacheControl" : {
+    "type" : "no-cache",
+    "maxAge" : 0
+  },
+  "methods" : {
+    "auditorEndpoint.putList" : {
+      "path" : "putList",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "endpoint.AuditorEndpoint.putList",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "empty"
+      }
+    }
+  },
+  "descriptor" : {
+    "schemas" : {
+      "AuditorWrapper" : {
+        "id" : "AuditorWrapper",
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "Auditor"
+            }
+          }
+        }
+      },
+      "Auditor" : {
+        "id" : "Auditor",
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "int64"
+          },
+          "paymentDate" : {
+            "type" : "string",
+            "format" : "date-time"
+          },
+          "warrantEFTAmt" : {
+            "type" : "number",
+            "format" : "float"
+          },
+          "warrantEFTAmtSign" : {
+            "type" : "string"
+          },
+          "lineAmt" : {
+            "type" : "number",
+            "format" : "float"
+          },
+          "lineAmtSign" : {
+            "type" : "string"
+          },
+          "vendor" : {
+            "type" : "string"
+          },
+          "vendorName" : {
+            "type" : "string"
+          },
+          "dept" : {
+            "type" : "string"
+          },
+          "document" : {
+            "type" : "string"
+          },
+          "invoice" : {
+            "type" : "string"
+          },
+          "paymentDescription" : {
+            "type" : "string"
+          },
+          "deptName" : {
+            "type" : "string"
+          },
+          "deptContact" : {
+            "type" : "string"
+          },
+          "warrantEFT" : {
+            "type" : "string"
+          },
+          "type" : {
+            "type" : "string"
+          }
+        }
+      }
+    },
+    "methods" : {
+      "endpoint.AuditorEndpoint.putList" : {
+        "request" : {
+          "$ref" : "AuditorWrapper"
+        }
+      }
+    }
+  }
+}
