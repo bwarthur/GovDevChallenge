@@ -31,19 +31,31 @@ body
 
 <body>
 <script src="http://mbostock.github.com/d3/d3.v2.min.js"></script>
+<div id="js-horizontal-circle" />
 
 
 <script>
-var width = 500,
+var width = 2500,
     height = 500, 
     margin = 50;
 
-var svg=d3.select("body").append("svg").attr("width",width).attr("height",height);
+var svg=d3.select("#js-horizontal-circle").append("svg").attr("width",width).attr("height",height);
 var x=d3.scale.linear().domain([0,5]).range([margin,width-margin]);
 var y=d3.scale.linear().domain([-10,10]).range([height-margin,margin]);
 var r=d3.scale.linear().domain([0,500]).range([0,20]);
 var o=d3.scale.linear().domain([10000,100000]).range([.5,1]);
-var c=d3.scale.category10().domain(["Africa","America","Asia","Europe","Oceania"]);
+// var c=d3.scale.category10().domain(["Africa","America","Asia","Europe","Oceania"]);
+var c=d3.scale.category10().domain(["Health",
+                                    "Revenue",
+                                    "Workforce Serv",
+                                    "Game & Fish",
+                                    "DOT",
+                                    "A&I",
+                                    "Family Services",
+                                    "Treasurer",
+                                    "Agriculture",
+                                    "DEQ",
+                                    "Audit"]);
 
 var xAxis = d3.svg.axis()
   .scale(x)
@@ -63,19 +75,8 @@ svg.append("g")
   .attr("class", "axis")
    .attr("transform", "translate(" + margin + ",0)")
   .call(yAxis);
-
-
-svg.selectAll(".h").data(d3.range(-8,10,2)).enter()
-  .append("line").classed("h",1)
-  .attr("x1",margin).attr("x2",height-margin)
-  .attr("y1",y).attr("y2",y)
   
-svg.selectAll(".v").data(d3.range(1,5)).enter()
-  .append("line").classed("v",1)
-  .attr("y1",margin).attr("y2",width-margin)
-  .attr("x1",x).attr("x2",x)
-  
-d3.csv("data.csv",function(csv) {
+d3.csv("data/vendorPayments.csv",function(csv) {
  
   // then we create the marks, which we put in an initial position
  
@@ -85,18 +86,18 @@ d3.csv("data.csv",function(csv) {
     .attr("cy",function(d) {return y(0);})
     .attr("r",function(d) {return r(0);})
  
-    .style("fill",function(d) {return c(d.continent);})
-    .style("opacity",function(d) {return o(+d.GDPcap);})
+    .style("fill",function(d) {return c(d.DeptName);})
+    .style("opacity",function(d) {return 0.5;})
  
       .append("title")
-      .text(function(d) {return d.country;})
+      .text(function(d) {return d.DeptName;})
    
   // now we initiate - moving the marks to their position
  
-//   svg.selectAll("circle").transition().duration(1000)
-//     .attr("cx",function(d) {return x(+d.GERD);})
-//     .attr("cy",function(d) {return y(+d.growth);})
-//     .attr("r",function(d) {return r(Math.sqrt(+d.population));})
+  svg.selectAll("circle")
+    .attr("cx",function(d, i) {return 16*i+100;})
+    .attr("cy",function(d, i) {return 300;})
+    .attr("r",function(d, i) {return Math.sqrt(+d.LineAmt);})
 })
 
 
