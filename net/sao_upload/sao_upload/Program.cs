@@ -29,7 +29,7 @@ namespace sao_upload
 
                         auditorItem.PaymentDate = csvReader.GetField<string>(0);
                         auditorItem.Type = csvReader.GetField<string>(1);
-                        auditorItem.WarrantEFTAmt = csvReader.GetField<decimal>(2);
+                        auditorItem.WarrantEFTAmt = Convert.ToDecimal(csvReader.GetField<string>(2).Remove(',').Remove('\\'));
                         auditorItem.WarrantEFTAmtSign = csvReader.GetField<string>(3);
                         auditorItem.LineAmt = csvReader.GetField<string>(4);
                         auditorItem.LineAmtSign = csvReader.GetField<string>(5);
