@@ -31,7 +31,8 @@ body
 
 <body>
 <script src="http://mbostock.github.com/d3/d3.v2.min.js"></script>
-<div id="js-horizontal-circle" />
+<div id="js-horizontal-circles" />
+<div id="js-barGraphs" />
 
 
 <script>
@@ -39,7 +40,7 @@ var width = 2500,
     height = 500, 
     margin = 50;
 
-var svg=d3.select("#js-horizontal-circle").append("svg").attr("width",width).attr("height",height);
+var svg=d3.select("#js-horizontal-circles").append("svg").attr("width",width).attr("height",height);
 var x=d3.scale.linear().domain([0,5]).range([margin,width-margin]);
 var y=d3.scale.linear().domain([-10,10]).range([height-margin,margin]);
 var r=d3.scale.linear().domain([0,500]).range([0,20]);
@@ -100,7 +101,8 @@ d3.csv("data/vendorPayments.csv",function(csv) {
     .attr("r",function(d, i) {return Math.sqrt(+d.LineAmt);})
 })
 
-
+	
+	
 
 </script>
 
