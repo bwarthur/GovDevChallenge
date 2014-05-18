@@ -18,8 +18,9 @@ namespace sao_upload
         static void Main(string[] args)
         {
             List<Auditor> list = GetValue();
-            const int batchCount = 5;
-            string url = "http://localhost.:8888/_ah/api/auditorEndpoint/v1/putList";
+            const int batchCount = 100;
+            //string url = "http://localhost.:8888/_ah/api/auditorEndpoint/v1/putList";
+            string url = "https://1-dot-team03-govchal00.appspot.com/_ah/api/auditorEndpoint/v1/putList";
 
             for (int i = 0; i < list.Count/batchCount; i++)
             {
@@ -39,8 +40,6 @@ namespace sao_upload
             string path = @"C:\projects\GovDevChallenge\net\data\Vendor Payments - ETS Data Request.csv";
 
             var list = new List<Auditor>();
-
-            int i = 0;
 
             using (TextReader textReader = new StreamReader(path))
             {
@@ -68,11 +67,6 @@ namespace sao_upload
                         auditorItem.WarrantEFT = csvReader.GetField<string>(14);
 
                         list.Add(auditorItem);
-
-                        i++;
-
-                        if (i > 100)
-                            break;
                     }
                 }
             }
