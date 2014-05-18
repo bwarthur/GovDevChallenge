@@ -25,7 +25,7 @@ function initialize() {
   var layer = new google.maps.KmlLayer({
     url: 'http://1-dot-team03-govchal00.appspot.com/kml/WY_counties.kml'
 });
-  ctaLayer.setMap(map);
+  layer.setMap(map);
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);
