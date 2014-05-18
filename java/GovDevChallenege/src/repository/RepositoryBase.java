@@ -4,7 +4,7 @@ import static com.googlecode.objectify.ObjectifyService.ofy;
 
 import java.util.List;
 
-import com.google.appengine.api.datastore.Key;
+import com.googlecode.objectify.Key;
 
 public abstract class RepositoryBase<T> {
 
@@ -17,8 +17,12 @@ public abstract class RepositoryBase<T> {
 	public void put(T entity){
         ofy().save().entity(entity).now();
 	}
-	public void putList(List<T> list)
-	{
+	public void putList(List<T> list) {
         ofy().save().entities(list).now();
 	}
+	
+    public void clear(Class<T> clazz) {
+        List<Key<T>> keys = ofy().load().type(clazz).keys().list();
+        ofy().delete().keys(keys);
+    }	
 }

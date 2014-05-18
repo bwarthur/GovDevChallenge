@@ -35,11 +35,11 @@
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/ng-grid/2.0.7/ng-grid.css" rel="stylesheet">
 
 	<script type="text/javascript" src="js/app.js"></script>
+	<script type="text/javascript" src="js/service/loggingService.js"></script>
+	<script type="text/javascript" src="js/service/auditorService.js"></script>
 	<script type="text/javascript" src="js/service/serviceClientService.js"></script>
 	<script type="text/javascript" src="js/controller/searchController.js"></script>
-	
-	
-	
+
 </head>
 
 <body ng-app="govdev" ng-controller="searchController">
@@ -51,15 +51,21 @@
 					Auditor
 				</h2>
 			</div> 
-			<div style="float:left;">
-				Vendor: <input type="text">
-			</div>
-			<div style="clear:both;"></div>
+			<form name="form1">
+				<div style="float:left;">
+					Vendor: <input type="text" ng-model="auditorSearchCriteria.name">
+				</div>
+				
+				<div style="clear:both;"></div>
+				
+		 		<div style="margin-top: 30px;">
+	 				<button type="button" class="btn btn-default" ng-click="searchX()">Search</button>
+	 			</div>					
+			</form>
 			
-	 		<div style="margin-top: 30px;">
-	 			<button type="button" class="btn btn-default" ng-click="searchX()">Search</button>
-	 		</div>	
-			
+            <div ng-if="showGrid()" style="margin-top:20px;">
+                <div style="width:auto; height: 400px;" ng-grid="gridOptions"></div>
+            </div>			
 			
 		</div>
 	</div>

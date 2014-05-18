@@ -1,4 +1,4 @@
-app.service('serviceClientService', function($q, $http){
+coreServicesModule.service('serviceClientService', function($q, $http){
 	"use strict";
 
 	var wrappingServiceName = "serviceClientService";

@@ -17,10 +17,14 @@ namespace sao_upload
     {
         static void Main(string[] args)
         {
+            Console.Write("Processing file...");
             List<Auditor> list = GetValue();
-            const int batchCount = 100;
-            //string url = "http://localhost.:8888/_ah/api/auditorEndpoint/v1/putList";
-            string url = "https://1-dot-team03-govchal00.appspot.com/_ah/api/auditorEndpoint/v1/putList";
+            Console.WriteLine("complete");
+
+
+            const int batchCount = 1000;
+            string url = "http://localhost.:8888/_ah/api/auditorEndpoint/v1/putList";
+            //string url = "https://1-dot-team03-govchal00.appspot.com/_ah/api/auditorEndpoint/v1/putList";
 
             for (int i = 0; i < list.Count/batchCount; i++)
             {
@@ -30,7 +34,11 @@ namespace sao_upload
 
                 var webClient = new WebClient();
                 webClient.Headers["Content-Type"] = "application/json;charset=UTF-8";
+                Console.Write("#");
                 webClient.UploadString(url, json);
+               
+                if (i > 10)
+                    break;
             }
 
         }

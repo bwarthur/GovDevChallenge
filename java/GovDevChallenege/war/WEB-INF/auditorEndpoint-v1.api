@@ -24,6 +24,21 @@
     "maxAge" : 0
   },
   "methods" : {
+    "auditorEndpoint.clear" : {
+      "path" : "clear",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "endpoint.AuditorEndpoint.clear",
+      "request" : {
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "empty"
+      }
+    },
     "auditorEndpoint.putList" : {
       "path" : "putList",
       "httpMethod" : "POST",
@@ -38,6 +53,22 @@
       },
       "response" : {
         "body" : "empty"
+      }
+    },
+    "auditorEndpoint.search" : {
+      "path" : "search",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "endpoint.AuditorEndpoint.search",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
       }
     }
   },
@@ -112,12 +143,43 @@
             "type" : "string"
           }
         }
+      },
+      "AuditorSearchCriteria" : {
+        "id" : "AuditorSearchCriteria",
+        "type" : "object",
+        "properties" : {
+          "name" : {
+            "type" : "string"
+          }
+        }
+      },
+      "AuditorCollection" : {
+        "id" : "AuditorCollection",
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "Auditor"
+            }
+          }
+        }
       }
     },
     "methods" : {
+      "endpoint.AuditorEndpoint.clear" : {
+      },
       "endpoint.AuditorEndpoint.putList" : {
         "request" : {
           "$ref" : "AuditorWrapper"
+        }
+      },
+      "endpoint.AuditorEndpoint.search" : {
+        "request" : {
+          "$ref" : "AuditorSearchCriteria"
+        },
+        "response" : {
+          "$ref" : "AuditorCollection"
         }
       }
     }
