@@ -8,5 +8,9 @@ coreServicesModule.service('auditorService', function ($window, $q, $http, loggi
     this.search = function(auditorSearchCriteria){
         return serviceClientService.put(isDebug, this.serviceName, this.endPointPath + "/search", auditorSearchCriteria);
     }
+    
+    this.getAgencyList = function(){
+    	return serviceClientService.get(isDebug, this.serviceName, this.endPointPath + "/getAgencyList"); 
+    }
 
 });

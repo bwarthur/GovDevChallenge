@@ -70,6 +70,21 @@
       "response" : {
         "body" : "autoTemplate(backendResponse)"
       }
+    },
+    "auditorEndpoint.getAgencyList" : {
+      "path" : "getAgencyList",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "endpoint.AuditorEndpoint.getAgencyList",
+      "request" : {
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
     }
   },
   "descriptor" : {
@@ -150,17 +165,35 @@
         "properties" : {
           "name" : {
             "type" : "string"
+          },
+          "department" : {
+            "type" : "string"
           }
         }
       },
-      "AuditorCollection" : {
-        "id" : "AuditorCollection",
+      "AuditorEndpointResult" : {
+        "id" : "AuditorEndpointResult",
+        "type" : "object",
+        "properties" : {
+          "count" : {
+            "type" : "integer"
+          },
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "Auditor"
+            }
+          }
+        }
+      },
+      "AgencyWrapper" : {
+        "id" : "AgencyWrapper",
         "type" : "object",
         "properties" : {
           "items" : {
             "type" : "array",
             "items" : {
-              "$ref" : "Auditor"
+              "type" : "string"
             }
           }
         }
@@ -179,7 +212,12 @@
           "$ref" : "AuditorSearchCriteria"
         },
         "response" : {
-          "$ref" : "AuditorCollection"
+          "$ref" : "AuditorEndpointResult"
+        }
+      },
+      "endpoint.AuditorEndpoint.getAgencyList" : {
+        "response" : {
+          "$ref" : "AgencyWrapper"
         }
       }
     }

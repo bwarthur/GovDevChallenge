@@ -21,7 +21,7 @@ app.controller("searchController", function($scope, auditorService, loggingServi
     $scope.setPagingData = function(data, page, pageSize){	
         var pagedData = data.slice((page - 1) * pageSize, page * pageSize);
         $scope.slicedData = pagedData;
-        $scope.totalServerItems = data.length;
+        //$scope.totalServerItems = data.length;
         if (!$scope.$$phase) {
             $scope.$apply();
         }
@@ -32,8 +32,17 @@ app.controller("searchController", function($scope, auditorService, loggingServi
             enablePaging: true,
     		showFooter: true,
             columnDefs: [
-                         	{ field:'vendorName', displayName:'Vendor Name' }
-                         ],
+                { field:'paymentDate', displayName:'Payment Date', cellFilter: 'date:\'MM/dd/yyyy\'' },
+                { field:'type', displayName:'War' },
+        	 	{ field:'lineAmt', displayName:'Line Amt', cellFilter: 'currency' },
+        	 	{ field:'vendorName', displayName:'Vendor' },
+        	 	{ field:'invoice', displayName:'Invoice Number' },
+        	 	{ field:'paymentDescription', displayName:'Description' },
+        	 	{ field:'document', displayName:'Document' },
+        	 	{ field:'deptContact', displayName:'Department Contact' },
+        	 	{ field:'deptName', displayName:'Department' },
+        	 	
+    	 	],
             totalServerItems: 'totalServerItems',
             pagingOptions: $scope.pagingOptions                      
 	};    
@@ -51,9 +60,16 @@ app.controller("searchController", function($scope, auditorService, loggingServi
     	
     	auditorService.search($scope.auditorSearchCriteria).then(function(data) {
     		console.log(data);
+    		$scope.totalServerItems = data.count;
+    		
+    		console.log($scope.totalServerItems);
     		$scope.allData = data.items;
     		$scope.setPagingData(data.items, 1, 10)
     	});
     }
-	
+    
+//    auditorService.getAgencyList().then(function(data) {
+//    	console.log(data);
+//    	$scope.departmentList = data;
+//    });
 });

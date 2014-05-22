@@ -26,20 +26,29 @@ namespace sao_upload
             string url = "http://localhost.:8888/_ah/api/auditorEndpoint/v1/putList";
             //string url = "https://1-dot-team03-govchal00.appspot.com/_ah/api/auditorEndpoint/v1/putList";
 
-            for (int i = 0; i < list.Count/batchCount; i++)
+            var a = (from b in list
+                     orderby b.DeptName
+                select b.DeptName).Distinct().ToList();
+
+            foreach (var item in a)
             {
-                var subList = list.Skip(batchCount*i).Take(batchCount);
-
-                string json = "{ \"items\": " + JsonConvert.SerializeObject(subList) + " }";
-
-                var webClient = new WebClient();
-                webClient.Headers["Content-Type"] = "application/json;charset=UTF-8";
-                Console.Write("#");
-                webClient.UploadString(url, json);
-               
-                if (i > 10)
-                    break;
+                Trace.WriteLine("<option value=\"" + item + "\">" + item + "</option>");
             }
+
+            //for (int i = 0; i < list.Count/batchCount; i++)
+            //{
+            //    var subList = list.Skip(batchCount*i).Take(batchCount);
+
+            //    string json = "{ \"items\": " + JsonConvert.SerializeObject(subList) + " }";
+
+            //    var webClient = new WebClient();
+            //    webClient.Headers["Content-Type"] = "application/json;charset=UTF-8";
+            //    Console.Write("#");
+            //    webClient.UploadString(url, json);
+
+            //    if (i > 10)
+            //        break;
+            //}
 
         }
 

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Bootstrap 3, from LayoutIt!</title>
+  <title>Auditor Search</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="">
   <meta name="author" content="">
@@ -48,13 +48,130 @@
 		<div class="col-md-12 column">
 			<div class="jumbotron">
 				<h2>
-					Auditor
+					Auditor Search
 				</h2>
 			</div> 
 			<form name="form1">
-				<div style="float:left;">
-					Vendor: <input type="text" ng-model="auditorSearchCriteria.name">
-				</div>
+				<div>
+					<div style="float:left;">
+						<label style="float:left; width:150px;">Vendor:</label> 
+						<input type="text" ng-model="auditorSearchCriteria.name">
+					</div>
+					<div style="float:left; margin-left: 100px;">
+						<label style="float:left; width:150px;">Department:</label> 
+						<select id="department" ng-model="auditorSearchCriteria.department">
+							<option value="A&I">A&I</option>
+<option value="Adm.Hear.">Adm.Hear.</option>
+<option value="Agriculture">Agriculture</option>
+<option value="Architects Bd">Architects Bd</option>
+<option value="Athletic Trn B">Athletic Trn B</option>
+<option value="Atty Gen.">Atty Gen.</option>
+<option value="Audit">Audit</option>
+<option value="Auditor">Auditor</option>
+<option value="Barber Bd">Barber Bd</option>
+<option value="Brd Martial Art">Brd Martial Art</option>
+<option value="Business Coucil">Business Coucil</option>
+<option value="Chiro Bd">Chiro Bd</option>
+<option value="Collections Bd">Collections Bd</option>
+<option value="Cosmetol Bd 265">Cosmetol Bd 265</option>
+<option value="CPA Bd">CPA Bd</option>
+<option value="DA Lara Cty 638">DA Lara Cty 638</option>
+<option value="DA Nat Cty">DA Nat Cty</option>
+<option value="Dental Bd 754">Dental Bd 754</option>
+<option value="DEQ">DEQ</option>
+<option value="DEQ Council">DEQ Council</option>
+<option value="Diet Lic Bd">Diet Lic Bd</option>
+<option value="DOC">DOC</option>
+<option value="DOT">DOT</option>
+<option value="DWS">DWS</option>
+<option value="ealth         3">ealth         3</option>
+<option value="Education">Education</option>
+<option value="Embalmer Bd 347">Embalmer Bd 347</option>
+<option value="Engineer">Engineer</option>
+<option value="Enhanced Oil">Enhanced Oil</option>
+<option value="Ent Tech Serv">Ent Tech Serv</option>
+<option value="Equalization Bd">Equalization Bd</option>
+<option value="Family Services">Family Services</option>
+<option value="Fire Prev.">Fire Prev.</option>
+<option value="Game & Fish">Game & Fish</option>
+<option value="Geo Surv 766">Geo Surv 766</option>
+<option value="Geologist Bd">Geologist Bd</option>
+<option value="Gov Residence">Gov Residence</option>
+<option value="Governor">Governor</option>
+<option value="Health">Health</option>
+<option value="Hearing Bd">Hearing Bd</option>
+<option value="Insurance">Insurance</option>
+<option value="JD 1-C">JD 1-C</option>
+<option value="JD 3-C">JD 3-C</option>
+<option value="JD 4B">JD 4B</option>
+<option value="JD 6-C">JD 6-C</option>
+<option value="JD 7-C">JD 7-C</option>
+<option value="JD 8B 358">JD 8B 358</option>
+<option value="JD 9A 332">JD 9A 332</option>
+<option value="JD 9-C">JD 9-C</option>
+<option value="JD-1A">JD-1A</option>
+<option value="JD-1B">JD-1B</option>
+<option value="JD-2A">JD-2A</option>
+<option value="JD-2B">JD-2B</option>
+<option value="JD-3A">JD-3A</option>
+<option value="JD-3B">JD-3B</option>
+<option value="JD-4 674">JD-4 674</option>
+<option value="JD-5A">JD-5A</option>
+<option value="JD-5B">JD-5B</option>
+<option value="JD-6A">JD-6A</option>
+<option value="JD-6B">JD-6B</option>
+<option value="JD-7A">JD-7A</option>
+<option value="JD-7B">JD-7B</option>
+<option value="JD-8A">JD-8A</option>
+<option value="JD-9B">JD-9B</option>
+<option value="Jud. Comm.">Jud. Comm.</option>
+<option value="Law Ex Bd">Law Ex Bd</option>
+<option value="Livestock Bd">Livestock Bd</option>
+<option value="LSO">LSO</option>
+<option value="Medicine Bd">Medicine Bd</option>
+<option value="Military">Military</option>
+<option value="Miner's Hosp Bd">Miner's Hosp Bd</option>
+<option value="Nursing Bd">Nursing Bd</option>
+<option value="Nursing Home Bd">Nursing Home Bd</option>
+<option value="Occ.Thrpy">Occ.Thrpy</option>
+<option value="Oil & Gas Comm">Oil & Gas Comm</option>
+<option value="Optometry Bd">Optometry Bd</option>
+<option value="Outfitters Bd">Outfitters Bd</option>
+<option value="Pari Mutuel">Pari Mutuel</option>
+<option value="Parks & Culture">Parks & Culture</option>
+<option value="Parole Bd">Parole Bd</option>
+<option value="Pharmacy Bd 234">Pharmacy Bd 234</option>
+<option value="Podiatry Bd">Podiatry Bd</option>
+<option value="Pro.Lic Bd">Pro.Lic Bd</option>
+<option value="PSC">PSC</option>
+<option value="Psyche Bd">Psyche Bd</option>
+<option value="Radiology Bd">Radiology Bd</option>
+<option value="Real Comm">Real Comm</option>
+<option value="Respcare">Respcare</option>
+<option value="Retirement">Retirement</option>
+<option value="Revenue">Revenue</option>
+<option value="School Comm">School Comm</option>
+<option value="Secretary of St">Secretary of St</option>
+<option value="State Lands">State Lands</option>
+<option value="Sup.Court">Sup.Court</option>
+<option value="Super Pub Inst">Super Pub Inst</option>
+<option value="Teach Std Bd">Teach Std Bd</option>
+<option value="th         307-">th         307-</option>
+<option value="th         777-">th         777-</option>
+<option value="Therapy Bd">Therapy Bd</option>
+<option value="Tourism Board">Tourism Board</option>
+<option value="Treasurer">Treasurer</option>
+<option value="UW">UW</option>
+<option value="UW Med Edu">UW Med Edu</option>
+<option value="Veterinary Bd">Veterinary Bd</option>
+<option value="Water Dev Comm">Water Dev Comm</option>
+<option value="WHICHE">WHICHE</option>
+<option value="Wildlife & Nat">Wildlife & Nat</option>
+<option value="Workforce Serv">Workforce Serv</option>
+<option value="Wyo Coll Comm">Wyo Coll Comm</option>
+						</select>
+					</div>
+				</div>	
 				
 				<div style="clear:both;"></div>
 				
